@@ -32,4 +32,4 @@ jobs:
           context: .
           push: true
           # ↓↓↓ 把这里换成你的 DockerHub用户名/镜像名 ↓↓↓
-          tags: your-username/your-repo-name:latest
+          tags: dddddongyang/notion_webhook_wechat_webhook_bridge:latest
