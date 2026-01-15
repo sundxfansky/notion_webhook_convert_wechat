@@ -50,9 +50,17 @@ const server = http.createServer((req, res) => {
             // https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=xxx
             const jsonBody = JSON.parse(body)
             // 解析body
-            const notion_url = jsonBody.data.url
+            
 
-            const content = `${title} \n url:${notion_url}`
+            // 尝试解析notion_url const notion_url = jsonBody.data.url
+            let notion_url=null
+            try {
+                notion_url = jsonBody.data.url
+            } catch (e) {
+                console.log('> notion_url is -- null');
+            }     
+            
+            const content = `${title} \n url:${notion_url?notion_url:""}`
             const wxurl = new URL(`https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=${wx_token}`);
             const wxbody = {
                 "msgtype": "text",
