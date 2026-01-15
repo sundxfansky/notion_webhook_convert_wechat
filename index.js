@@ -48,13 +48,11 @@ const server = http.createServer((req, res) => {
             console.log('> Query Params:', Object.fromEntries(params));
             // notion
             // https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=xxx
-            const jsonBody = JSON.parse(body)
             // 解析body
-            
-
             // 尝试解析notion_url const notion_url = jsonBody.data.url
             let notion_url=null
             try {
+                const jsonBody = JSON.parse(body)
                 notion_url = jsonBody.data.url
             } catch (e) {
                 console.log('> notion_url is -- null');
